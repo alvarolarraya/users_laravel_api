@@ -20,12 +20,12 @@ class GetUsersListController extends BaseController
     {
         $usersList = $this->userDataSource->getAll();
 
-        if(empty($usersList)){
+        if (empty($usersList)) {
             return response()->json([], Response::HTTP_OK);
         }
         $response = [];
-        foreach($usersList as $user){
-            array_push($response,json_encode(['id'=>$user->getId(),'email'=>$user->getEmail()]));
+        foreach ($usersList as $user) {
+            array_push($response, json_encode(['id' => $user->getId(),'email' => $user->getEmail()]));
         }
         return response()->json($response, Response::HTTP_OK);
     }
