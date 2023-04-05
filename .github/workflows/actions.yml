@@ -3,7 +3,7 @@ name: actions
 on:
   push:
     branches:
-      - main
+      - master
 
 jobs:
   action:
@@ -14,4 +14,4 @@ jobs:
           fetch-depth: 0
       - run: composer install
       - name: unit tests
-        run: ./vendor/bin/grumphp run 
+        run: ./vendor/bin/grumphp run
