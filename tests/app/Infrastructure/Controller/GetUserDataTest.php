@@ -37,7 +37,8 @@ class GetUserDataTest extends TestCase
      */
     public function whenUserIdResquestedIfExistUserWithEmailThenReturnId()
     {
-        $this->userDataSource->expects('findByEmail')->with('email@email.com')->andReturn(new User(1, 'email@email.com'));
+        $this->userDataSource->expects('findByEmail')->with('email@email.com')
+            ->andReturn(new User(1, 'email@email.com'));
 
         $response = $this->get('/api/user/email@email.com');
 
@@ -64,7 +65,8 @@ class GetUserDataTest extends TestCase
      */
     public function whenUsersListRequestedIfNotEmptyThenReturnUsersList()
     {
-        $this->userDataSource->expects('getAll')->andReturn([new User(1, 'email@email.com'),new User(2, 'otro_email@email.com')]);
+        $this->userDataSource->expects('getAll')
+            ->andReturn([new User(1, 'email@email.com'),new User(2, 'otro_email@email.com')]);
 
         $response = $this->get('/api/users');
 
@@ -93,7 +95,8 @@ class GetUserDataTest extends TestCase
      */
     public function whenEarlyAdopterIsCheckedUpIfItIsThenMessage()
     {
-        $this->userDataSource->expects('findByEmail')->with('email@email.com')->andReturn(new User(1, 'email@email.com'));
+        $this->userDataSource->expects('findByEmail')->with('email@email.com')
+            ->andReturn(new User(1, 'email@email.com'));
 
         $response = $this->get('/api/early_adopter/email@email.com');
 
@@ -106,7 +109,8 @@ class GetUserDataTest extends TestCase
      */
     public function whenEarlyAdopterIsCheckedUpIfItIsntThenMessage()
     {
-        $this->userDataSource->expects('findByEmail')->with('email@email.com')->andReturn(new User(101, 'email@email.com'));
+        $this->userDataSource->expects('findByEmail')->with('email@email.com')
+            ->andReturn(new User(101, 'email@email.com'));
 
         $response = $this->get('/api/early_adopter/email@email.com');
 
